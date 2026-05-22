@@ -1,4 +1,6 @@
-This is a full Deep Research Agent with multi-depth LLM orchestration
+This is a full Deep Research Agent with multi-depth LLM orchestration.
+You can type any query which you want to research on and get corresponding web-search triggered which later gets summarized into an intuitive and tabular format to consume.
+
 Research pipeline supports three depth modes dispatched from a single
 orchestrator interface: single-shot (one Exa search + one synthesis pass),
 multi-step (LLM planner generates 3-5 sub-queries via Zod-validated
