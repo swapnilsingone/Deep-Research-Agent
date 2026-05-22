@@ -1,4 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a full Deep Research Agent with multi-depth LLM orchestration
+Research pipeline supports three depth modes dispatched from a single
+orchestrator interface: single-shot (one Exa search + one synthesis pass),
+multi-step (LLM planner generates 3-5 sub-queries via Zod-validated
+generateObject, parallel Exa fetches, URL deduplication, then a final
+synthesis pass), and iterative (multi-step + a reflective gap-analysis
+step that identifies unanswered questions and triggers up to two further
+search rounds).
+
+All modes stream structured SSE events over a Node.js ReadableStream
+(step / sources / token / error / done), giving the client a depth-agnostic
+contract. Synthesis uses OpenRouter-compatible models via
+@ai-sdk/openai-compatible; the prompt contract in prompts.ts enforces
+citation-grounded markdown with inline [n] references. Model pricing is
+normalised from OpenRouter per-token figures to $/M tokens for display.
+History persists to localStorage with a 50-entry cap and full state restoration.
+
+
+
+Uses [Next.js](https://nextjs.org) bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
